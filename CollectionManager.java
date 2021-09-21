@@ -19,8 +19,32 @@ public class CollectionManager {
      * PG - display list in order of genres
      * Q - terminate Collection Manager
      */
-    public void commandHelper(StringTokenizer st, Album album, Collection collection){
-
+    public void commandHelper(StringTokenizer st, Album album, Collection collection, String command){
+        if (command.equals("A")){
+            album.populate(st.nextToken(), st.nextToken());
+            collection.add(album);
+        }
+        else if (command.equals("D")) {
+            collection.remove(album);
+        }
+        else if (command.equals("L")) {
+            collection.lendingOut(album);
+        }
+        else if (command.equals("R")) {
+            collection.returnAlbum(album);
+        }
+        else if (command.equals("P")) {
+            collection.print();
+        }
+        else if (command.equals("PD")){
+            collection.printByReleaseDate();
+        }
+        else if (command.equals("PG")){
+            collection.printByGenre();
+        }
+        else {
+            System.out.println("Invalid command!");
+        }
     }
     public void run(){
         Scanner reader = new Scanner(System.in);
@@ -32,35 +56,11 @@ public class CollectionManager {
         String command = st.nextToken();
         //when taking in inputs, make sure there is an appropriate amount of tokens for the command
         while(!command.equals("Q")) {
-
-            if (command.equals("A")){
-                album.populate(st.nextToken(), st.nextToken());
-                collection.add(album);
-            }
-            else if (command.equals("D")) {
-                collection.remove(album);
-            }
-            else if (command.equals("L")) {
-                collection.lendingOut(album);
-            }
-            else if (command.equals("R")) {
-                collection.returnAlbum(album);
-            }
-            else if (command.equals("P")) {
-                collection.print();
-            }
-            else if (command.equals("PD")){
-                collection.printByReleaseDate();
-            }
-            else if (command.equals("PG")){
-                collection.printByGenre();
-            }
-            else {
-                System.out.println("Invalid command!");
-            }
+            commandHelper(st, album, collection, command);
             input =reader.nextLine();
             st =new StringTokenizer(input, ",");
             command = st.nextToken();
+            album = new Album(st.nextToken(), st.nextToken());
         }
         System.out.println("Collection Manager terminated.");
     }
