@@ -16,7 +16,9 @@ public class Album {
     }
     private Date releaseDate;
     private boolean isAvailable;
-
+     /**
+     * A setter for the availability of an album.
+     */
     public void setNotAvailable(){
         this.isAvailable = false;
     }
@@ -30,12 +32,27 @@ public class Album {
         this.artist = artist;
     }
 
+    /**
+     * Compares two albums and determines if they are the same.
+     * Override method from java.util.
+     * @param obj
+     * @return true if the two objects are equal
+     */
     @Override
     public boolean equals(Object obj) { }
 
+    /**
+     * Converts the album and its attributes to a string form for readability by the user.
+     * @return the album details in the form of a string
+     */
     @Override
     public String toString() { }
 
+    /**
+     * Populates the album with genre and date attributes.
+     * @param genre
+     * @param date
+     */
     public void populate(String genre, String date) {
 
     }
