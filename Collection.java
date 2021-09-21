@@ -10,10 +10,16 @@ import java.util.StringTokenizer;
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
-    private int find(Album album) {
-    }//find the album index, or return NOT_FOUND
+    private int find(Album album) { //find the album index, or return -1 if no match
+        for (var i = 0; i < albums.length; i++) {
+            if (albums[i].equals(album)) {
+                return i;
+            }
+        }
+        return -1;
+    }
     private void grow() {
-        Album newList[] = new Album[numAlbums+4];
+        Album newList[] = new Album[numAlbums+3];
         for (int i = 0; i < numAlbums; i++)
         {
             newList[i] = albums[i];
@@ -21,7 +27,15 @@ public class Collection {
         albums = newList;
     }//increase the capacity of the array list by 4
     public boolean add(Album album) {
-
+        if (album.getDate.isValid == true && find(album) == -1) {
+            numAlbums++; // add to numAlbums
+            if (numAlbums % 4 == 0) {
+                grow();
+            }
+            albums[numAlbums-1]=album;
+            return true;
+        }
+        return false;
     }
     public boolean remove(Album album) {
 
