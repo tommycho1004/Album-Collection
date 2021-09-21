@@ -19,28 +19,72 @@ public class CollectionManager {
      * PG - display list in order of genres
      * Q - terminate Collection Manager
      */
-    public void commandHelper(StringTokenizer st, Album album, Collection collection, String command){
+    public void cmHelper(StringTokenizer st, Album album, Collection collection, String command){
         if (command.equals("A")){
-            album.populate(st.nextToken(), st.nextToken());
-            collection.add(album);
+            if (st.countTokens() != 4)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                album.populate(st.nextToken(), st.nextToken());
+                collection.add(album);
+            }
         }
         else if (command.equals("D")) {
-            collection.remove(album);
+            if (st.countTokens() != 2)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                collection.remove(album);
+            }
         }
         else if (command.equals("L")) {
-            collection.lendingOut(album);
+            if (st.countTokens() != 2)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else
+            {
+                collection.lendingOut(album);
+            }
         }
         else if (command.equals("R")) {
-            collection.returnAlbum(album);
+            if (st.countTokens() != 2)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                collection.returnAlbum(album);
+            }
         }
         else if (command.equals("P")) {
-            collection.print();
+            if (st.countTokens() != 0)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                collection.print();
+            }
         }
         else if (command.equals("PD")){
-            collection.printByReleaseDate();
+            if (st.countTokens() != 0)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                collection.printByReleaseDate();
+            }
         }
         else if (command.equals("PG")){
-            collection.printByGenre();
+            if (st.countTokens() != 0)
+            {
+                System.out.println("Invalid number of parameters!");
+            }
+            else{
+                collection.printByGenre();
+            }
+
         }
         else {
             System.out.println("Invalid command!");
@@ -54,9 +98,8 @@ public class CollectionManager {
         Collection collection = new Collection();
         Album album = new Album(st.nextToken(), st.nextToken());
         String command = st.nextToken();
-        //when taking in inputs, make sure there is an appropriate amount of tokens for the command
         while(!command.equals("Q")) {
-            commandHelper(st, album, collection, command);
+            cmHelper(st, album, collection, command);
             input =reader.nextLine();
             st =new StringTokenizer(input, ",");
             command = st.nextToken();
