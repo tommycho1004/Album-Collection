@@ -64,6 +64,15 @@ public class Album {
     public String toString() { }
 
     /**
+     * Converts the first two attributes of the album: title and artist, to a string.
+     * This is for the lending and returning tools in collection manager.
+     * @return the first two attributes of the album in the form of a string.
+     */
+    public String toStringFirstTwo() {
+
+    }    
+    
+    /**
      * Populates the album with genre and date attributes.
      * @param genre
      * @param date
