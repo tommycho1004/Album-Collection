@@ -16,16 +16,16 @@ public class Album {
     }
     private Date releaseDate;
     private boolean isAvailable;
-     /**
+
+    /**
      * A setter for the availability of an album.
      */
-    public void setNotAvailable(){
-        this.isAvailable = false;
-    }
-    public void setAvailable(){
-        this.isAvailable = true;
+    public void setAvailability(boolean s)
+    {
+        this.isAvailable = s;
     }
 
+    Album() {}
     Album(String title, String artist)
     {
         this.title = title;
