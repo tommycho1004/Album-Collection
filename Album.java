@@ -22,7 +22,6 @@ public class Album {
         this.isAvailable = s;
     }
 
-    Album() {}
     Album(String title, String artist)
     {
         this.title = title;
