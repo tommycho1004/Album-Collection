@@ -81,7 +81,19 @@ public class Collection {
      * @return true if the album was lent and false otherwise.
      */
     public boolean lendingOut(Album album) {
-        album.setAvailability(false);
+        if (find(album) != -1) {
+            if(album.getAvailability() == false){
+                return false;
+            }
+            else{
+                album.setAvailability(false);
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
+
     } //set to not available
     
     /**
@@ -90,7 +102,19 @@ public class Collection {
      * @return true if the album was returned and false otherwise.
      */
     public boolean returnAlbum(Album album) {
-        album.setAvailability(true);
+        if (find(album) != -1) {
+            if(album.getAvailability() == true){
+                return false;
+            }
+            else{
+                album.setAvailability(true);
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
+
     } //set to available
     
     /**
@@ -118,6 +142,14 @@ public class Collection {
         if (numAlbums == 0) {
             System.out.print("The Collection is Empty!");
         }
+    }
+    public boolean isFound(Album album){
+        for (var i = 0; i < albums.length; i++) {
+            if (albums[i].equals(album)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
