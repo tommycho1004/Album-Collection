@@ -11,9 +11,6 @@ public class Album {
     }
     private String artist;
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
-    enum Genre{
-        Classical, Country, Jazz, Pop, Unknown;
-    }
     private Date releaseDate;
     private boolean isAvailable;
 
