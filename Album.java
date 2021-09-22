@@ -25,6 +25,9 @@ public class Album {
     {
         this.isAvailable = s;
     }
+    public boolean getAvailability(){
+        return isAvailable;
+    }
 
     Album(String title, String artist)
     {
