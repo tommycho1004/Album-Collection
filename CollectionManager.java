@@ -23,7 +23,16 @@ public class CollectionManager {
             }
             else{
                 album.populate(st.nextToken(), st.nextToken());
-                collection.add(album);
+                if (!album.getReleaseDate().isValid()){
+                    System.out.println("Invalid Date!");
+                }
+                else if (collection.add(album) == false){
+                    System.out.println("is already in the collection.");
+                }
+                else {
+                    collection.add(album); //check if the above if condition adds the album if the boolean is true
+                    System.out.println("added.");
+                }
             }
         }
         else if (command.equals("D")) {
