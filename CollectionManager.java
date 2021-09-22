@@ -102,17 +102,14 @@ public class CollectionManager {
         while(!command.equals("Q")) {
             if (command.equals("P") || command.equals("PG") || command.equals("PD)")){
                 printHelper(st, collection, command);
-                input = reader.nextLine();
-                st = new StringTokenizer(input, ",");
-                command = st.nextToken();
             }
             else{
                 album = new Album(st.nextToken(), st.nextToken());
                 cmHelper(st, album, collection, command);
-                input = reader.nextLine();
-                st = new StringTokenizer(input, ",");
-                command = st.nextToken();
             }
+            input = reader.nextLine();
+            st = new StringTokenizer(input, ",");
+            command = st.nextToken();
         }
         System.out.println("Collection Manager terminated.");
     }
