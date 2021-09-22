@@ -39,7 +39,19 @@ public class Album {
      * @return true if the two objects are equal
      */
     @Override
-    public boolean equals(Object obj) { }
+    public boolean equals(Object obj) { 
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (obj instanceof Album) {
+            Album newAlb = (Album) obj;
+            return newAlb.title.equals(title) && newAlb.artist.equals(artist);
+        }
+        return false;
+    }
 
     /**
      * Converts the album and its attributes to a string form for readability by the user.
