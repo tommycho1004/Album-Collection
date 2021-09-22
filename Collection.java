@@ -61,7 +61,18 @@ public class Collection {
      * @return true if the album was successfully removed and false otherwise.
      */
     public boolean remove(Album album) {
-
+        if (numAlbums == 0) {
+            return false;
+        }
+        if (find(album) != -1) {
+            for (var j = find(album); j < albums.length; j++) {
+                albums[j] = albums[j + 1];
+                if (albums[j] == null) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     /**
@@ -86,21 +97,27 @@ public class Collection {
      * Prints the collection of albums in no specific order.
      */
     public void print() {
-
+        if (numAlbums == 0) {
+            System.out.print("The Collection is Empty!");
+        }
     } //display the list without specifying the order
     
     /**
      * Prints the collection of albums in order of release date.
      */
     public void printByReleaseDate() {
-
+        if (numAlbums == 0) {
+            System.out.print("The Collection is Empty!");
+        }
     }
     
     /**
      * Prints the collection of albums in order of genre.
      */
     public void printByGenre() {
-
+        if (numAlbums == 0) {
+            System.out.print("The Collection is Empty!");
+        }
     }
 }
 
