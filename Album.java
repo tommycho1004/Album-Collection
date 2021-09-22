@@ -13,6 +13,10 @@ public class Album {
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
     private Date releaseDate;
     private boolean isAvailable;
+    
+    public Date getReleaseDate(){
+        return releaseDate;
+    }
 
     /**
      * A setter for the availability of an album.
