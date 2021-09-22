@@ -27,36 +27,59 @@ public class CollectionManager {
                     System.out.println("Invalid Date!");
                 }
                 else if (collection.add(album) == false){
-                    System.out.println("is already in the collection.");
+                    System.out.println(album.toString() + " is already in the collection.");
                 }
                 else {
                     collection.add(album); //check if the above if condition adds the album if the boolean is true
-                    System.out.println("added.");
+                    System.out.println(album.toString() + " added.");
                 }
             }
         }
         else if (command.equals("D")) {
             if (st.countTokens() != 2) {
                 System.out.println("Invalid number of parameters!");
-            }
-            else{
-                collection.remove(album);
+            } else{
+                if (collection.getNumAlbums() == 0){
+                    System.out.println("The list is empty!");
+                }
+                else if (collection.remove(album) == false){
+                    System.out.println(album.toString() + "is not in the collection.");
+                }
+                else{
+                    collection.remove(album);
+                    System.out.println(album.toString()+" deleted.");
+                }
             }
         }
         else if (command.equals("L")) {
             if (st.countTokens() != 2) {
                 System.out.println("Invalid number of parameters!");
             }
+            else if(collection.isFound(album)){
+                System.out.println(album.toString() + " is not in the collection.");
+            }
+            else if(collection.lendingOut(album) == false){
+                System.out.println(album.toString() + " is not available.");
+            }
             else {
                 collection.lendingOut(album);
+                System.out.println(album.toString() + " lending out and set to unavailable.");
             }
         }
         else if (command.equals("R")) {
             if (st.countTokens() != 2) {
                 System.out.println("Invalid number of parameters!");
             }
+            else if(collection.isFound(album) == false){
+                System.out.println(album.toString() + " is not in the collection.");
+            }
+            else if(collection.returnAlbum(album) == false)
+            {
+                System.out.println(album.toString() + "return cannot be completed.");
+            }
             else{
                 collection.returnAlbum(album);
+                System.out.println("returning and set to available");
             }
         }
         else {
