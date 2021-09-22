@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  */
 
 public class Collection {
-    private Album[] albums;
+    private Album[] albums = new Album[4];
     private int numAlbums; //number of albums currently in the collection
     
     /**
@@ -30,7 +30,7 @@ public class Collection {
      * Use whenever the album list fills up to max capacity so we never have a completely full list.
      */
     private void grow() {
-        Album newList[] = new Album[numAlbums+3];
+        Album newList[] = new Album[numAlbums + 4];
         for (int i = 0; i < numAlbums; i++)
         {
             newList[i] = albums[i];
@@ -70,7 +70,7 @@ public class Collection {
      * @return true if the album was lent and false otherwise.
      */
     public boolean lendingOut(Album album) {
-        album.setNotAvailable();
+        album.setAvailability(false);
     } //set to not available
     
     /**
@@ -79,7 +79,7 @@ public class Collection {
      * @return true if the album was returned and false otherwise.
      */
     public boolean returnAlbum(Album album) {
-
+        album.setAvailability(true);
     } //set to available
     
     /**
