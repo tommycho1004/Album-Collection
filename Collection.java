@@ -12,6 +12,15 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
     
     /**
+     * Gets the number of albums in the collection.
+     * @return integer value of the quantity of albums.
+     */
+    public int getNumAlbums()
+    {
+        return numAlbums;
+    }
+    
+    /**
      * Finds the index of a certain album within the collection.
      * @param album
      * @return the index of the target album.
@@ -35,7 +44,7 @@ public class Collection {
         {
             newList[i] = albums[i];
         }
-        albums = newList;
+        albums = newList; //maybe needs this.albums??
     }//increase the capacity of the array list by 4
     
     /**
@@ -123,6 +132,11 @@ public class Collection {
     public void print() {
         if (numAlbums == 0) {
             System.out.print("The Collection is Empty!");
+        }
+        else{
+            for (int i = 0; i < albums.length; i++){
+                System.out.println(albums[i].toString());
+            }
         }
     } //display the list without specifying the order
     
