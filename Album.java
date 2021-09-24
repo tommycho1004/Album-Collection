@@ -61,23 +61,43 @@ public class Album {
      * @return the album details in the form of a string
      */
     @Override
-    public String toString() { }
-
+    public String toString() {
+        return this.title + "::" + this.artist + "::" + this.genre.genreString(); //add date to this!
+    }
     /**
      * Converts the first two attributes of the album: title and artist, to a string.
      * This is for the lending and returning tools in collection manager.
      * @return the first two attributes of the album in the form of a string.
      */
-    public String toStringFirstTwo() {
-
-    }    
+    public String toStringFirstTwo() { //needs testing
+        return this.title + "::" + this.artist;
+    }
     
     /**
      * Populates the album with genre and date attributes.
      * @param genre
      * @param date
      */
+    /**
+     * Populates the album with genre and date attributes.
+     * @param genre
+     * @param date
+     */
     public void populate(String genre, String date) {
-
+        if (genre.equals("Pop")){
+            this.genre = Genre.Pop;
+        }
+        else if (genre.equals("Country")){
+            this.genre = Genre.Country;
+        }
+        else if (genre.equals("Classical")){
+            this.genre = Genre.Classical;
+        }
+        else if (genre.equals("Jazz")){
+            this.genre = Genre.Jazz;
+        }
+        else {
+            this.genre = Genre.Unknown;
+        }
     }
 }
