@@ -78,11 +78,6 @@ public class Album {
      * @param genre
      * @param date
      */
-    /**
-     * Populates the album with genre and date attributes.
-     * @param genre
-     * @param date
-     */
     public void populate(String genre, String date) {
         if (genre.equals("Pop")){
             this.genre = Genre.Pop;
