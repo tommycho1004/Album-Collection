@@ -6,14 +6,29 @@
 
 public class Album {
     private String title;
-    public void setTitle(String title){
-        this.title = title;
-    }
     private String artist;
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
     private Date releaseDate;
     private boolean isAvailable;
     
+    /**
+     * Setter for album title
+     * @param title
+     */
+    public void setTitle(String title){
+        this.title = title;
+    }
+    
+    /**
+     * getter for album genre
+     * @return album genre in form of Genre
+     */
+    public Genre getGenre(){return genre;}
+    
+    /**
+     * getter for album release date
+     * @return album release date in form of Date
+     */
     public Date getReleaseDate(){
         return releaseDate;
     }
@@ -25,6 +40,11 @@ public class Album {
     {
         this.isAvailable = s;
     }
+    
+    /**
+     * a getter for the availability of an album
+     * @return true if album is available, false otherwise
+     */
     public boolean getAvailability(){
         return isAvailable;
     }
