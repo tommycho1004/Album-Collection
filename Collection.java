@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Collection {
     private Album[] albums = new Album[4];
     private int numAlbums; //number of albums currently in the collection
-    
+
     /**
      * Gets the number of albums in the collection.
      * @return integer value of the quantity of albums.
@@ -19,16 +19,13 @@ public class Collection {
     {
         return numAlbums;
     }
-    
+
     /**
      * Finds the index of a certain album within the collection.
      * @param album
      * @return the index of the target album.
      */
     private int find(Album album) { //find the album index, or return -1 if no match
-        if (numAlbums == 0) {
-            return -1;
-        }
         for (var i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album)) {
                 return i;
@@ -36,7 +33,7 @@ public class Collection {
         }
         return -1;
     }
-    
+
     /**
      * Increases the size of the album list by 4.
      * Use whenever the album list fills up to max capacity so we never have a completely full list.
@@ -49,7 +46,7 @@ public class Collection {
         }
         albums = newList; //maybe needs this.albums??
     }
-    
+
     /**
      * Adds an album to the collection.
      * @param album
@@ -68,7 +65,7 @@ public class Collection {
         }
         return false;
     }
-    
+
     /**
      * Removes an album from the collection.
      * @param album
@@ -82,13 +79,14 @@ public class Collection {
             for (var j = find(album); j < numAlbums; j++) {
                 albums[j] = albums[j + 1];
                 if (albums[j] == null) {
+                    numAlbums--;
                     return true;
                 }
             }
         }
         return false;
     }
-    
+
     /**
      * Sets the availability of an album to unavailable.
      * @param album
@@ -96,11 +94,11 @@ public class Collection {
      */
     public boolean lendingOut(Album album) {
         if (find(album) != -1) {
-            if(album.getAvailability() == false){
+            if(albums[find(album)].getAvailability() == false){
                 return false;
             }
             else{
-                album.setAvailability(false);
+                albums[find(album)].setAvailability(false);
                 return true;
             }
         }
@@ -109,7 +107,7 @@ public class Collection {
         }
 
     } //set to not available
-    
+
     /**
      * Sets the availability of an album to available.
      * @param album
@@ -117,71 +115,69 @@ public class Collection {
      */
     public boolean returnAlbum(Album album) {
         if (find(album) != -1) {
-            if(album.getAvailability() == true){
+            if(albums[find(album)].getAvailability() == true){
                 return false;
             }
             else{
-                album.setAvailability(true);
+                albums[find(album)].setAvailability(true);
                 return true;
             }
         }
         else{
             return false;
         }
-
     } //set to available
-    
+
     /**
      * Prints the collection of albums in no specific order.
      */
     public void print() {
         if (numAlbums == 0) {
-            System.out.print("The Collection is Empty!");
+            System.out.println("The collection is empty!");
         }
         else{
-            System.out.println("*List of albums in the collection");
+            System.out.println("*List of albums in the collection.");
             for (int i = 0; i < numAlbums; i++){
                 System.out.println(albums[i].toString());
             }
-            System.out.println("*End of List");
+            System.out.println("*End of list");
         }
     } //display the list without specifying the order
-    
+
     /**
      * Prints the collection of albums in order of release date.
      */
     public void printByReleaseDate() {
         if (numAlbums == 0) {
-            System.out.print("The Collection is Empty!");
+            System.out.println("The collection is empty!");
         } else {
             System.out.println("*Album collection by the release dates.");
+            Album[] newArray = albums;
             for (int i = 0; i < numAlbums - 1; i++) {
                 for (int j = 0; j < numAlbums - i - 1; j++) {
-                    if (!albums[j].getReleaseDate().equals(albums[j + 1].getReleaseDate())) {
-                        if (albums[j].getReleaseDate().compareTo(albums[j + 1].getReleaseDate()) > 0) {//j happened before i
-                            Album temp = albums[j];
-                            albums[j] = albums[j + 1];
-                            albums[j + 1] = temp;
-                        }
+                    if (albums[j].getReleaseDate().compareTo(albums[j + 1].getReleaseDate()) > 0) {//j happened before i
+                        Album temp = albums[j];
+                        albums[j] = albums[j + 1];
+                        albums[j + 1] = temp;
                     }
                 }
             }
-            for (int i = 0; i < albums.length; i++) {
+            for (int i = 0; i < numAlbums; i++) {
                 System.out.println(albums[i].toString());
             }
-            System.out.println("*End of List");
+            System.out.println("*End of list");
         }
     }
-    
+
     /**
      * Prints the collection of albums in order of genre.
      */
     public void printByGenre() {
         if (numAlbums == 0) {
-            System.out.print("The Collection is Empty!");
+            System.out.println("The collection is empty!");
         }
         else{
-            System.out.println("*Album collection by genre");
+            System.out.println("*Album collection by genre.");
             for (int i = 0; i < numAlbums - 1; i++){
                 int min_idx = i;
                 for (int j = i + 1; j < numAlbums; j++){
@@ -196,26 +192,16 @@ public class Collection {
             for (int i = 0; i < numAlbums; i++){
                 System.out.println(albums[i].toString());
             }
-            System.out.println("*End of List");
+            System.out.println("*End of list");
         }
     }
-    
+
     /**
      * helper method that determines if an album is in the collection or not
      * @param album
      * @return true if album is found and false if it is not in the collection
      */
-    public boolean isFound(Album album){
-        for (var i = 0; i < albums.length; i++) {
-            if (albums[i].equals(album)) {
-                return true;
-            }
-        }
-        return false;
+    public int isFound(Album album){
+        return find(album);
     }
 }
-
-
-
-
-
