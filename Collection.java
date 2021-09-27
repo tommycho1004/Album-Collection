@@ -137,7 +137,7 @@ public class Collection {
         }
         else{
             System.out.println("*List of albums in the collection");
-            for (int i = 0; i < albums.length; i++){
+            for (int i = 0; i < numAlbums; i++){
                 System.out.println(albums[i].toString());
             }
             System.out.println("*End of List");
@@ -162,7 +162,7 @@ public class Collection {
                     }
                 }
             }
-            for (int i = 0; i < albums.length; i++) {
+            for (int i = 0; i < numAlbums; i++) {
                 System.out.println(albums[i].toString());
             }
             System.out.println("*End of List");
@@ -189,7 +189,7 @@ public class Collection {
                 albums[min_idx] = albums [i];
                 albums[i] = temp;
             }
-            for (int i = 0; i < albums.length; i++){
+            for (int i = 0; i < numAlbums; i++){
                 System.out.println(albums[i].toString());
             }
             System.out.println("*End of List");
