@@ -23,7 +23,9 @@ public class Album {
      * getter for album genre
      * @return album genre in form of Genre
      */
-    public Genre getGenre(){return genre;}
+    public Genre getGenre(){
+        return genre;
+    }
     
     /**
      * getter for album release date
@@ -84,6 +86,7 @@ public class Album {
     public String toString() {
         return this.title + "::" + this.artist + "::" + this.genre.genreString(); //add date to this!
     }
+    
     /**
      * Converts the first two attributes of the album: title and artist, to a string.
      * This is for the lending and returning tools in collection manager.
