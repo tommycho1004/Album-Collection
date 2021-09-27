@@ -26,7 +26,7 @@ public class Collection {
      * @return the index of the target album.
      */
     private int find(Album album) { //find the album index, or return -1 if no match
-        for (var i = 0; i < albums.length; i++) {
+        for (var i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album)) {
                 return i;
             }
