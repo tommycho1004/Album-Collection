@@ -45,7 +45,7 @@ public class Collection {
             newList[i] = albums[i];
         }
         albums = newList; //maybe needs this.albums??
-    }//increase the capacity of the array list by 4
+    }
     
     /**
      * Adds an album to the collection.
