@@ -10,15 +10,7 @@ public class Album {
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
     private Date releaseDate;
     private boolean isAvailable = true;
-    
-    /**
-     * Setter for album title
-     * @param title
-     */
-    public void setTitle(String title){
-        this.title = title;
-    }
-    
+
     /**
      * getter for album genre
      * @return album genre in form of Genre
@@ -26,7 +18,7 @@ public class Album {
     public Genre getGenre(){
         return genre;
     }
-    
+
     /**
      * getter for album release date
      * @return album release date in form of Date
@@ -42,7 +34,7 @@ public class Album {
     {
         this.isAvailable = s;
     }
-    
+
     /**
      * a getter for the availability of an album
      * @return true if album is available, false otherwise
@@ -51,6 +43,7 @@ public class Album {
         return isAvailable;
     }
 
+    //parameterized constructor
     Album(String title, String artist)
     {
         this.title = title;
@@ -64,7 +57,7 @@ public class Album {
      * @return true if the two objects are equal
      */
     @Override
-    public boolean equals(Object obj) { 
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
@@ -85,14 +78,14 @@ public class Album {
     @Override
     public String toString() {
         String availability;
-        if (this.isAvailable) {
+        if (this.isAvailable == true) {
             availability = "is available";
         } else {
             availability = "is not available";
         }
-        return this.title + "::" + this.artist + "::" + this.genre.genreString() + "::" + this.releaseDate + "::" + availability;
+        return this.title + "::" + this.artist + "::" + this.genre.genreString() + "::" + this.releaseDate.dateString() + "::" + availability;
     }
-    
+
     /**
      * Converts the first two attributes of the album: title and artist, to a string.
      * This is for the lending and returning tools in collection manager.
@@ -101,28 +94,29 @@ public class Album {
     public String toStringFirstTwo() { //needs testing
         return this.title + "::" + this.artist;
     }
-    
+
     /**
      * Populates the album with genre and date attributes.
      * @param genre
      * @param date
      */
     public void populate(String genre, String date) {
-        if (genre.equals("pop")){
+        if (genre.equals("pop") || genre.equals("Pop")){
             this.genre = Genre.Pop;
         }
-        else if (genre.equals("country")){
+        else if (genre.equals("country") || genre.equals("Country")){
             this.genre = Genre.Country;
         }
-        else if (genre.equals("classical")){
+        else if (genre.equals("classical") || genre.equals("Classical")){
             this.genre = Genre.Classical;
         }
-        else if (genre.equals("jazz")){
+        else if (genre.equals("jazz") || genre.equals("Jazz")){
             this.genre = Genre.Jazz;
         }
         else {
             this.genre = Genre.Unknown;
         }
         this.releaseDate = new Date(date);
+
     }
 }
