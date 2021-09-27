@@ -84,7 +84,15 @@ public class Album {
      */
     @Override
     public String toString() {
-        return this.title + "::" + this.artist + "::" + this.genre.genreString(); //add date to this!
+        String availability;
+        if (this.isAvailable) {
+            availability = "is available";
+        } else {
+            availability = "is not available";
+        }
+        if (releaseDate.isValid()) {
+            return this.title + "::" + this.artist + "::" + this.genre.genreString() + this.releaseDate + "::" + availability;
+        }
     }
     
     /**
@@ -117,6 +125,6 @@ public class Album {
         else {
             this.genre = Genre.Unknown;
         }
-        //put date conversion from string to Date here
+        this.releaseDate = new Date(date);
     }
 }
