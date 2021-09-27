@@ -134,9 +134,11 @@ public class Collection {
             System.out.print("The Collection is Empty!");
         }
         else{
+            System.out.println("*List of albums in the collection");
             for (int i = 0; i < albums.length; i++){
                 System.out.println(albums[i].toString());
             }
+            System.out.println("*End of List");
         }
     } //display the list without specifying the order
     
@@ -157,6 +159,7 @@ public class Collection {
             System.out.print("The Collection is Empty!");
         }
         else{
+            System.out.println("*Album collection by genre");
             for (int i = 0; i < numAlbums - 1; i++){
                 int min_idx = i;
                 for (int j = i + 1; j < numAlbums; j++){
@@ -171,6 +174,7 @@ public class Collection {
             for (int i = 0; i < albums.length; i++){
                 System.out.println(albums[i].toString());
             }
+            System.out.println("*End of List");
         }
     }
     
