@@ -12,74 +12,76 @@ public class CollectionManager {
      * A helper method that reads the input command and executes its respective function.
      * This method is for non-print functions of this program.
      * @param st
-     * @param album
      * @param collection
      * @param command
      */
-    public void cmHelper(StringTokenizer st, Album album, Collection collection, String command){
+    public void cmHelper(StringTokenizer st,  Collection collection, String command){
         if (command.equals("A")){
             if (st.countTokens() != 4) {
                 System.out.println("Invalid number of parameters!");
             }
             else{
+                Album album = new Album(st.nextToken(), st.nextToken());
                 album.populate(st.nextToken(), st.nextToken());
                 if (!album.getReleaseDate().isValid()){
                     System.out.println("Invalid Date!");
                 }
                 else if (collection.add(album) == false){
-                    System.out.println(album.toString() + " is already in the collection.");
+                    System.out.println(album.toString() + " >> is already in the collection.");
                 }
                 else {
                     collection.add(album); //check if the above if condition adds the album if the boolean is true
-                    System.out.println(album.toString() + " added.");
+                    System.out.println(album.toString() + " >> added.");
                 }
             }
         }
         else if (command.equals("D")) {
             if (st.countTokens() != 2) {
                 System.out.println("Invalid number of parameters!");
-            } else{
+            }
+            else{
+                Album album = new Album(st.nextToken(), st.nextToken());
                 if (collection.getNumAlbums() == 0){
                     System.out.println("The list is empty!");
                 }
                 else if (collection.remove(album) == false){
-                    System.out.println(album.toString() + "is not in the collection.");
+                    System.out.println(album.toStringFirstTwo() + " >> is not in the collection.");
                 }
                 else{
                     collection.remove(album);
-                    System.out.println(album.toString()+" deleted.");
+                    System.out.println(album.toStringFirstTwo()+" >> deleted.");
                 }
             }
         }
         else if (command.equals("L")) {
-            if (st.countTokens() != 2) {
+            Album album = new Album(st.nextToken(), st.nextToken());
+            if (st.countTokens() != 0) {
                 System.out.println("Invalid number of parameters!");
             }
-            else if(collection.isFound(album)){
-                System.out.println(album.toStringFirstTwo() + " is not in the collection.");
+            else if(collection.isFound(album) < 0){
+                System.out.println(album.toStringFirstTwo() + " >> is not in the collection.");
             }
             else if(collection.lendingOut(album) == false){
-                System.out.println(album.toStringFirstTwo() + " is not available.");
+                System.out.println(album.toStringFirstTwo() + " >> is not available.");
             }
             else {
-                collection.lendingOut(album);
-                System.out.println(album.toStringFirstTwo() + " lending out and set to unavailable.");
+                System.out.println(album.toStringFirstTwo() + " >> lending out and set to not available.");
             }
         }
         else if (command.equals("R")) {
-            if (st.countTokens() != 2) {
+            Album album = new Album(st.nextToken(), st.nextToken());
+            if (st.countTokens() != 0) {
                 System.out.println("Invalid number of parameters!");
             }
-            else if(collection.isFound(album) == false){
-                System.out.println(album.toStringFirstTwo() + " is not in the collection.");
+            else if(collection.isFound(album) < 0){
+                System.out.println(album.toStringFirstTwo() + " >> is not in the collection.");
             }
             else if(collection.returnAlbum(album) == false)
             {
-                System.out.println(album.toStringFirstTwo() + "return cannot be completed.");
+                System.out.println(album.toStringFirstTwo() + " >> return cannot be completed.");
             }
             else{
-                collection.returnAlbum(album);
-                System.out.println("returning and set to available");
+                System.out.println(album.toStringFirstTwo() + " >> returning and set to available.");
             }
         }
         else {
@@ -128,16 +130,17 @@ public class CollectionManager {
         System.out.println("Collection Manager starts running.");
         String input = reader.nextLine();
         StringTokenizer st = new StringTokenizer(input, ",");
-        Album album;
         Collection collection = new Collection();
         String command = st.nextToken();
         while(!command.equals("Q")) {
-            if (command.equals("P") || command.equals("PG") || command.equals("PD)")){
+            if (command.equals("P") || command.equals("PG") || command.equals("PD")){
                 printHelper(st, collection, command);
             }
-            else{
-                album = new Album(st.nextToken(), st.nextToken());
-                cmHelper(st, album, collection, command);
+            else if (command.equals("A") || command.equals("D") || command.equals("L") || command.equals("R")){
+                cmHelper(st, collection, command);
+            }
+            else {
+                System.out.println("Invalid command!");
             }
             input = reader.nextLine();
             st = new StringTokenizer(input, ",");
