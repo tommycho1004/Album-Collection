@@ -108,22 +108,21 @@ public class Album {
      * @param date
      */
     public void populate(String genre, String date) {
-        if (genre.equals("Pop")){
+        if (genre.equals("pop")){
             this.genre = Genre.Pop;
         }
-        else if (genre.equals("Country")){
+        else if (genre.equals("country")){
             this.genre = Genre.Country;
         }
-        else if (genre.equals("Classical")){
+        else if (genre.equals("classical")){
             this.genre = Genre.Classical;
         }
-        else if (genre.equals("Jazz")){
+        else if (genre.equals("jazz")){
             this.genre = Genre.Jazz;
         }
         else {
             this.genre = Genre.Unknown;
         }
         this.releaseDate = new Date(date);
-        this.setAvailability(true);
     }
 }
