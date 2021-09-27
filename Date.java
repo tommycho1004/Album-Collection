@@ -11,7 +11,15 @@ public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
-    
+
+    /**
+     * A method that converts a date object to a string.
+     * @return the date in string form
+     */
+    public String dateString(){
+        return month + "/" + day + "/" +year;
+    }
+
     /** Parameterized constructor that takes the input string "mm/dd/yyyy" and converts it into the date type
      * @param date a string date in the form of mm/dd/yyyy
      * */
@@ -22,23 +30,16 @@ public class Date implements Comparable<Date> {
         year = Integer.parseInt(st.nextToken());
     } //take “mm/dd/yyyy” and create a Date object
 
-    
+
     /** Returns today's date */
     Calendar today = Calendar.getInstance();
-    
     public Date() {
         this.year = today.get(Calendar.YEAR);
         this.month = today.get(Calendar.MONTH);
         this.day = today.get(Calendar.DATE);
     } //create an object with today’s date (see Calendar class)
 
-
-    public Date(Date date) {
-        this.day = date.day;
-        this.month = date.month;
-        this.year = date.year;
-    }
-    
+    /** static integers*/
     public static final int QUAD = 4;
     public static final int CENT = 100;
     public static final int QUADCENT = 400;
@@ -61,6 +62,11 @@ public class Date implements Comparable<Date> {
     public static final int nov = 10;
     public static final int dec = 11;
 
+    /**
+     * A helper method that determines how many days february has.
+     * @param year
+     * @return integer of days in february
+     */
     private int febDays(int year) {
         if (year % QUAD == 0) {
             if (year % CENT == 0) {
@@ -71,12 +77,17 @@ public class Date implements Comparable<Date> {
         } else return febNoLeap;
     }
 
+    /**
+     * A helper method that outputs how many days in a specific month there is.
+     * @param month
+     * @param year
+     * @return integer days in the month we're looking for
+     */
     private int daysInMonth(int month, int year) { //month-1
         month = month - 1;
         if (month == feb) {
             return febDays(year);
-        } else if (month == jan || month == march || month == may || month == july || 
-                month == aug || month == oct || month == dec) {
+        } else if (month == jan || month == march || month == may || month == july || month == aug || month == oct || month == dec) {
             return longMonth;
         } else {
             return shortMonth;
@@ -84,13 +95,9 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * A method that converts a date object to a string.
-     * @return the date in string form
+     * A method that determines if a date is valid or not
+     * @return true if the date is valid, false if otherwise
      */
-    public String dateString(){
-        return month + "/" + day + "/" +year;
-    }
-    
     public boolean isValid() {
         if (this.year < eighties || this.year > today.get(Calendar.YEAR)) {
             return false;
@@ -114,6 +121,11 @@ public class Date implements Comparable<Date> {
         return true;
     }
 
+    /**
+     * A method that compares a date with another one and returns
+     * @param date
+     * @return
+     */
     @Override
     public int compareTo(Date date) {
         int diff = this.year - date.year;
@@ -126,33 +138,8 @@ public class Date implements Comparable<Date> {
         }
         return this.day - date.day;
     }
-    
-    public int getMonth() {
-        return month;
-    }
 
-    public int getDay() {
-        return day;
-    }
 
-    public int getYear() {
-        return year;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (obj instanceof Date) {
-            Date newDate = (Date) obj;
-            return newDate.equals(this);
-        }
-        return false;
-    }
 
     /**Testbed main for the Date class*/
     public static void main(String[]args) {
