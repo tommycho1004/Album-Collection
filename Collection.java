@@ -156,7 +156,29 @@ public class Collection {
         if (numAlbums == 0) {
             System.out.print("The Collection is Empty!");
         }
+        else{
+            for (int i = 0; i < numAlbums - 1; i++){
+                int min_idx = i;
+                for (int j = i + 1; j < numAlbums; j++){
+                    if (albums[j].getGenre().compareTo(albums[min_idx].getGenre()) < 0){
+                        min_idx = j;
+                    }
+                }
+                Album temp = albums[min_idx];
+                albums[min_idx] = albums [i];
+                albums[i] = temp;
+            }
+            for (int i = 0; i < albums.length; i++){
+                System.out.println(albums[i].toString());
+            }
+        }
     }
+    
+    /**
+     * helper method that determines if an album is in the collection or not
+     * @param album
+     * @return true if album is found and false if it is not in the collection
+     */
     public boolean isFound(Album album){
         for (var i = 0; i < albums.length; i++) {
             if (albums[i].equals(album)) {
