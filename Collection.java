@@ -60,7 +60,6 @@ public class Collection {
         //check for date, if is valid
         if (album.getReleaseDate().isValid() && find(album) == -1) {
             numAlbums++; // add to numAlbums
-            album.setAvailability(true);
             if (numAlbums % 4 == 0) {
                 grow();
             }
