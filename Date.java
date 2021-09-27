@@ -11,6 +11,7 @@ public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
+    
     /** Parameterized constructor that takes the input string "mm/dd/yyyy" and converts it into the date type
      * @param date a string date in the form of mm/dd/yyyy
      * */
@@ -82,6 +83,13 @@ public class Date implements Comparable<Date> {
         }
     }
 
+    /**
+     * A method that converts a date object to a string.
+     * @return the date in string form
+     */
+    public String dateString(){
+        return month + "/" + day + "/" +year;
+    }
     
     public boolean isValid() {
         if (this.year < eighties || this.year > today.get(Calendar.YEAR)) {
