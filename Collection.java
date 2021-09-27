@@ -53,12 +53,14 @@ public class Collection {
      * @return true if the album was successfully added and false otherwise.
      */
     public boolean add(Album album) {
-        if (album.getDate.isValid == true && find(album) == -1) {
+        // add to numAlbums
+        //check for date, if is valid
+        if (album.getReleaseDate().isValid() && find(album) == -1) {
             numAlbums++; // add to numAlbums
             if (numAlbums % 4 == 0) {
                 grow();
             }
-            albums[numAlbums-1]=album;
+            albums[numAlbums - 1] = album;
             return true;
         }
         return false;
