@@ -80,13 +80,15 @@ public class Date implements Comparable<Date> {
     }
     
     public boolean isValid() {
+        if (this.year < eighties || this.year > today.get(Calendar.YEAR)) {
+            return false;
+        }
+        if (this.month - 1 > 11 || this.month - 1 < 0) {
+            return false;
+        }
         if (this.day > daysInMonth(this.month, this.year)) {
             return false;
         }
-        if (this.month - 1 >)
-            if (this.year < eighties || this.year > today.get(Calendar.YEAR)) {
-                return false;
-            }
         if (this.year == today.get(Calendar.YEAR)) {
             if (this.month - 1 > today.get(Calendar.MONTH)) {
                 return false;
