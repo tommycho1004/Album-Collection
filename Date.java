@@ -33,7 +33,9 @@ public class Date implements Comparable<Date> {
 
 
     public Date(Date date) {
-
+        this.day = date.day;
+        this.month = date.month;
+        this.year = date.year;
     }
     
     public static final int QUAD = 4;
@@ -72,12 +74,14 @@ public class Date implements Comparable<Date> {
         month = month - 1;
         if (month == feb) {
             return febDays(year);
-        } else if (month == jan || month == march || month == may || month == july || month == aug || month == oct || month == dec) {
+        } else if (month == jan || month == march || month == may || month == july || 
+                month == aug || month == oct || month == dec) {
             return longMonth;
         } else {
             return shortMonth;
         }
     }
+
     
     public boolean isValid() {
         if (this.year < eighties || this.year > today.get(Calendar.YEAR)) {
@@ -114,9 +118,44 @@ public class Date implements Comparable<Date> {
         }
         return this.day - date.day;
     }
+    
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getYear() {
+        return year;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (obj instanceof Date) {
+            Date newDate = (Date) obj;
+            return newDate.equals(this);
+        }
+        return false;
+    }
 
     /**Testbed main for the Date class*/
     public static void main(String[]args) {
-
+        Date date = new Date("11/19/1979");
+        boolean expectedResult = false;
+        boolean result = date.isValid();
+        System.out.print("Test case #1:");
+        if (result == expectedResult) {
+            System.out.print("Pass.");
+        } else {
+            System.out.print("Fail.");
+        }
     }
 }
