@@ -90,8 +90,7 @@ public class Album {
         } else {
             availability = "is not available";
         }
-        return this.title + "::" + this.artist + "::" + this.genre.genreString() + this.releaseDate + "::" + 
-                availability;
+        return this.title + "::" + this.artist + "::" + this.genre.genreString() + "::" + this.releaseDate + "::" + availability;
     }
     
     /**
