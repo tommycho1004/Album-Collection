@@ -124,5 +124,6 @@ public class Album {
             this.genre = Genre.Unknown;
         }
         this.releaseDate = new Date(date);
+        this.setAvailability(true);
     }
 }
