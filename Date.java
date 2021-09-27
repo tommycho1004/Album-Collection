@@ -102,7 +102,15 @@ public class Date implements Comparable<Date> {
 
     @Override
     public int compareTo(Date date) {
-
+        int diff = this.year - date.year;
+        if (diff != 0) {
+            return diff;
+        }
+        diff = this.month - date.month;
+        if (diff != 0) {
+            return diff;
+        }
+        return this.day - date.day;
     }
 
     /**Testbed main for the Date class*/
