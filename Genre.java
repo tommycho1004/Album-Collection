@@ -2,7 +2,7 @@
  *
  */
 public enum Genre{
-    Pop, Country, Classical, Jazz, Unknown;
+     Classical, Country, Jazz, Pop, Unknown;
     public String genreString()
     {
         if (this == Pop){
