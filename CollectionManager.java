@@ -58,9 +58,6 @@ public class CollectionManager {
             if (st.countTokens() != 0) {
                 System.out.println("Invalid number of parameters!");
             }
-            else if(collection.isFound(album) < 0){
-                System.out.println(album.toStringFirstTwo() + " >> is not in the collection.");
-            }
             else if(collection.lendingOut(album) == false){
                 System.out.println(album.toStringFirstTwo() + " >> is not available.");
             }
@@ -72,9 +69,6 @@ public class CollectionManager {
             Album album = new Album(st.nextToken(), st.nextToken());
             if (st.countTokens() != 0) {
                 System.out.println("Invalid number of parameters!");
-            }
-            else if(collection.isFound(album) < 0){
-                System.out.println(album.toStringFirstTwo() + " >> is not in the collection.");
             }
             else if(collection.returnAlbum(album) == false)
             {
