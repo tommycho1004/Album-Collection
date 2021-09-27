@@ -148,6 +148,22 @@ public class Collection {
     public void printByReleaseDate() {
         if (numAlbums == 0) {
             System.out.print("The Collection is Empty!");
+        } else {
+            System.out.println("*Album collection by the release dates.");
+            Album[] newArray = albums;
+            for (int i = 0; i < albums.length - 1; i++) {
+                for (int j = 0; j < albums.length - i - 1; j++) {
+                    if (albums[j].getReleaseDate().compareTo(albums[j + 1].getReleaseDate()) > 0) {//j happened before i
+                        Album temp = albums[j];
+                        albums[j] = albums[j + 1];
+                        albums[j + 1] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < albums.length; i++) {
+                System.out.println(albums[i].toString());
+            }
+            System.out.println("*End of List");
         }
     }
     
