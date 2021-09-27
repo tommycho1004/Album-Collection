@@ -79,7 +79,7 @@ public class Collection {
             return false;
         }
         if (find(album) != -1) {
-            for (var j = find(album); j < albums.length; j++) {
+            for (var j = find(album); j < numAlbums; j++) {
                 albums[j] = albums[j + 1];
                 if (albums[j] == null) {
                     return true;
