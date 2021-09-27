@@ -114,5 +114,6 @@ public class Album {
         else {
             this.genre = Genre.Unknown;
         }
+        //put date conversion from string to Date here
     }
 }
