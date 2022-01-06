@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"collection","l":"Album"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"collection","l":"Collection"},{"p":"collection","l":"CollectionManager"},{"p":"collection","l":"Date"},{"p":"collection","l":"Genre"},{"p":"collection","l":"RunProgram"}];updateSearchResults();
